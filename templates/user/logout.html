@@ -1,0 +1,26 @@
+{% extends 'partials/base.html' %}
+{% block title %} Logout - Fertilizer Management System {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg mt-5">
+                <div class="card-body p-5 text-center">
+                    <h2 class="text-success mb-3">You have been logged out</h2>
+                    <p class="text-muted mb-4">Thank you for using the Fertilizer Management System.</p>
+                    
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{% url 'user-login' %}" class="btn btn-success mr-2">Admin Login</a>
+                        <a href="{% url 'farmer-login' %}" class="btn btn-outline-success">Farmer Login</a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'landing_page' %}" class="text-secondary small">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

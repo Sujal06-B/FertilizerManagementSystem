@@ -1,0 +1,54 @@
+{% extends 'partials/farmer_base.html' %}
+{% block title %}Order History{% endblock %}
+{% block content %}
+{% include 'partials/nav.html' %}
+
+<div class="container">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4>Your Orders & Bills</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Fertilizer Name</th>
+                        <th>Company</th>
+                        <th>Weight (kg)</th>
+                        <th>Price (per unit)</th>
+                        <th>Quantity</th>
+                        <th>Total Bill</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.date|date:"M d, Y" }}</td>
+                        <td>{{ order.product.name }}</td>
+                        <td>{{ order.product.company }}</td>
+                        <td>{{ order.product.weight }}</td>
+                        <td>₹{{ order.product.price }}</td>
+                        <td>{{ order.order_quantity }}</td>
+                        <td>
+                            <!-- Calculate Bill: Price * Qty -->
+                             ₹{% widthratio order.product.price 1 order.order_quantity %}
+                        </td>
+                        <td>
+                            {% if order.status == 'Accepted' %}
+                                <span class="badge bg-success">Accepted</span>
+                            {% elif order.status == 'Denied' %}
+                                <span class="badge bg-danger">Denied</span>
+                            {% else %}
+                                <span class="badge bg-warning">Pending</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

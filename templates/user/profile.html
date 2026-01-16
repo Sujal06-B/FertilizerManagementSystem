@@ -1,0 +1,67 @@
+{% extends 'partials/base.html' %}
+{% block title%} Profile Page {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white">
+                        Profile Picture
+                    </div>
+                    <div class="card-body text-center">
+                         <img class="img-thumbnail rounded-circle" src="{{ user.profile.image.url }}" alt="Profile Image" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white">
+                        Profile Page
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h4">Profile Information</span> 
+                                    <div>
+                                        <a class="btn btn-success btn-sm" href="{% url 'user-profile-update' %}">Edit Profile</a>
+                                        <form method="post" action="{% url 'user-logout' %}" style="display:inline;">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <hr>
+                                <table class="table bg-white table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Name</th>
+                                            <td>{{ user.username }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <td>{{ user.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Phone</th>
+                                            <td>{{ user.profile.phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Address</th>
+                                            <td>{{ user.profile.address }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

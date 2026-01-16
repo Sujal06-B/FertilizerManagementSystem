@@ -1,0 +1,49 @@
+{% extends 'partials/base.html' %}
+{% block title %}Admin Orders Requests{% endblock %}
+{% block content %}
+{% include 'partials/topnav.html' %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4>Farmer Order Requests</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Farmer</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Current Stock</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.staff.username }} ({{ order.staff.profile.phone }})</td>
+                        <td>{{ order.product.name }}</td>
+                        <td>{{ order.order_quantity }}</td>
+                        <td>{{ order.product.quantity }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>
+                            {% if order.status == 'Pending' %}
+                            <form method="POST" class="d-inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="order_id" value="{{ order.id }}">
+                                <button type="submit" name="action" value="accept" class="btn btn-success btn-sm">Accept</button>
+                                <button type="submit" name="action" value="deny" class="btn btn-danger btn-sm">Deny</button>
+                            </form>
+                            {% else %}
+                            <span class="text-muted">{{ order.status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,337 @@
+{
+    "products": [
+        {
+            "id": 3,
+            "name": "iPhone 14",
+            "company": "Gen",
+            "category": "Phone",
+            "quantity": 83,
+            "weight": "1.00",
+            "price": "999.00"
+        },
+        {
+            "id": 4,
+            "name": "Samsung Galaxy S23",
+            "company": "Gen",
+            "category": "Phone",
+            "quantity": 74,
+            "weight": "1.00",
+            "price": "899.00"
+        },
+        {
+            "id": 5,
+            "name": "iPad Air",
+            "company": "Gen",
+            "category": "Tablet",
+            "quantity": 30,
+            "weight": "1.00",
+            "price": "600.00"
+        },
+        {
+            "id": 6,
+            "name": "Sony Headphones",
+            "company": "Gen",
+            "category": "Electronics",
+            "quantity": 58,
+            "weight": "1.00",
+            "price": "300.00"
+        },
+        {
+            "id": 7,
+            "name": "Logitech Mouse",
+            "company": "Gen",
+            "category": "Electronics",
+            "quantity": 144,
+            "weight": "1.00",
+            "price": "50.00"
+        },
+        {
+            "id": 8,
+            "name": "Office Paper",
+            "company": "Gen",
+            "category": "Stationary",
+            "quantity": 493,
+            "weight": "1.00",
+            "price": "10.00"
+        },
+        {
+            "id": 9,
+            "name": "Pens (Box)",
+            "company": "Gen",
+            "category": "Stationary",
+            "quantity": 200,
+            "weight": "1.00",
+            "price": "5.00"
+        },
+        {
+            "id": 10,
+            "name": "Sandwich",
+            "company": "Gen",
+            "category": "Food",
+            "quantity": 9,
+            "weight": "1.00",
+            "price": "8.00"
+        },
+        {
+            "id": 11,
+            "name": "Apple Watch",
+            "company": "Gen",
+            "category": "Smart Watch",
+            "quantity": 41,
+            "weight": "1.00",
+            "price": "400.00"
+        }
+    ],
+    "orders": [
+        {
+            "id": 2,
+            "product_id": 7,
+            "staff_id": 6,
+            "order_quantity": 4,
+            "status": "Completed",
+            "date": "2026-01-10T07:17:24.513Z"
+        },
+        {
+            "id": 3,
+            "product_id": 3,
+            "staff_id": 6,
+            "order_quantity": 5,
+            "status": "Declined",
+            "date": "2026-01-10T07:17:24.527Z"
+        },
+        {
+            "id": 5,
+            "product_id": 10,
+            "staff_id": 6,
+            "order_quantity": 5,
+            "status": "Declined",
+            "date": "2026-01-10T07:17:24.554Z"
+        },
+        {
+            "id": 6,
+            "product_id": 6,
+            "staff_id": 2,
+            "order_quantity": 2,
+            "status": "Pending",
+            "date": "2026-01-10T07:17:24.567Z"
+        },
+        {
+            "id": 7,
+            "product_id": 4,
+            "staff_id": 2,
+            "order_quantity": 2,
+            "status": "Completed",
+            "date": "2026-01-10T07:17:24.580Z"
+        },
+        {
+            "id": 8,
+            "product_id": 7,
+            "staff_id": 2,
+            "order_quantity": 2,
+            "status": "Declined",
+            "date": "2026-01-10T07:17:24.593Z"
+        },
+        {
+            "id": 9,
+            "product_id": 3,
+            "staff_id": 5,
+            "order_quantity": 5,
+            "status": "Declined",
+            "date": "2026-01-10T07:17:24.604Z"
+        },
+        {
+            "id": 11,
+            "product_id": 4,
+            "staff_id": 5,
+            "order_quantity": 4,
+            "status": "Pending",
+            "date": "2026-01-10T07:17:24.627Z"
+        },
+        {
+            "id": 12,
+            "product_id": 3,
+            "staff_id": 6,
+            "order_quantity": 3,
+            "status": "Completed",
+            "date": "2026-01-10T07:17:24.639Z"
+        },
+        {
+            "id": 13,
+            "product_id": 11,
+            "staff_id": 5,
+            "order_quantity": 1,
+            "status": "Declined",
+            "date": "2026-01-10T07:17:24.652Z"
+        },
+        {
+            "id": 14,
+            "product_id": 8,
+            "staff_id": 2,
+            "order_quantity": 3,
+            "status": "Pending",
+            "date": "2026-01-10T07:17:24.663Z"
+        },
+        {
+            "id": 15,
+            "product_id": 5,
+            "staff_id": 5,
+            "order_quantity": 5,
+            "status": "Declined",
+            "date": "2026-01-10T07:17:24.674Z"
+        },
+        {
+            "id": 16,
+            "product_id": 10,
+            "staff_id": 6,
+            "order_quantity": 4,
+            "status": "Pending",
+            "date": "2026-01-10T07:17:24.684Z"
+        },
+        {
+            "id": 17,
+            "product_id": 11,
+            "staff_id": 6,
+            "order_quantity": 3,
+            "status": "Completed",
+            "date": "2026-01-10T07:17:24.695Z"
+        },
+        {
+            "id": 18,
+            "product_id": 8,
+            "staff_id": 5,
+            "order_quantity": 4,
+            "status": "Completed",
+            "date": "2026-01-10T07:17:24.706Z"
+        },
+        {
+            "id": 19,
+            "product_id": 10,
+            "staff_id": 2,
+            "order_quantity": 2,
+            "status": "Completed",
+            "date": "2026-01-10T07:17:24.718Z"
+        },
+        {
+            "id": 20,
+            "product_id": 5,
+            "staff_id": 6,
+            "order_quantity": 5,
+            "status": "Pending",
+            "date": "2026-01-10T07:17:24.729Z"
+        },
+        {
+            "id": 22,
+            "product_id": 3,
+            "staff_id": 4,
+            "order_quantity": 3,
+            "status": "Pending",
+            "date": "2026-01-10T07:18:52.049Z"
+        },
+        {
+            "id": 23,
+            "product_id": 6,
+            "staff_id": 4,
+            "order_quantity": 3,
+            "status": "Pending",
+            "date": "2026-01-10T07:18:58.162Z"
+        },
+        {
+            "id": 24,
+            "product_id": 4,
+            "staff_id": 4,
+            "order_quantity": 6,
+            "status": "Pending",
+            "date": "2026-01-10T07:19:08.973Z"
+        },
+        {
+            "id": 25,
+            "product_id": 7,
+            "staff_id": 4,
+            "order_quantity": 4,
+            "status": "Pending",
+            "date": "2026-01-10T07:19:17.022Z"
+        },
+        {
+            "id": 26,
+            "product_id": 9,
+            "staff_id": 4,
+            "order_quantity": 6,
+            "status": "Pending",
+            "date": "2026-01-10T07:29:44.536Z"
+        },
+        {
+            "id": 27,
+            "product_id": 4,
+            "staff_id": 4,
+            "order_quantity": 11,
+            "status": "Pending",
+            "date": "2026-01-15T08:19:00.243Z"
+        },
+        {
+            "id": 28,
+            "product_id": 3,
+            "staff_id": 4,
+            "order_quantity": 1,
+            "status": "Pending",
+            "date": "2026-01-15T08:19:44.983Z"
+        },
+        {
+            "id": 29,
+            "product_id": 3,
+            "staff_id": 7,
+            "order_quantity": 1,
+            "status": "Pending",
+            "date": "2026-01-15T09:35:23.378Z"
+        },
+        {
+            "id": 30,
+            "product_id": 3,
+            "staff_id": 8,
+            "order_quantity": 4,
+            "status": "Accepted",
+            "date": "2026-01-15T10:15:22.547Z"
+        }
+    ],
+    "users": [
+        {
+            "username": "admin",
+            "email": "yafsharghasemloo@gmail.com",
+            "is_staff": false
+        },
+        {
+            "username": "bob",
+            "email": "bob@email.com",
+            "is_staff": false
+        },
+        {
+            "username": "Sushil_Bolke",
+            "email": "codersujal@gmail.com",
+            "is_staff": false
+        },
+        {
+            "username": "Sushil_Bolke1",
+            "email": "codersujal@gmail.com",
+            "is_staff": false
+        },
+        {
+            "username": "alice",
+            "email": "alice@example.com",
+            "is_staff": false
+        },
+        {
+            "username": "charlie",
+            "email": "charlie@example.com",
+            "is_staff": false
+        },
+        {
+            "username": "sadichha",
+            "email": "sadichhachougale@gmail.com",
+            "is_staff": true
+        },
+        {
+            "username": "pranali",
+            "email": "pranali@gmail.com",
+            "is_staff": false
+        }
+    ]
+}

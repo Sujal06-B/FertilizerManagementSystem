@@ -1,0 +1,43 @@
+{% extends 'partials/base.html' %}
+{% block title%} Login - Fertilizer Management System {% endblock %}
+{% block nav %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg mt-5">
+                <div class="card-header text-center bg-success text-white">
+                    <h3 class="mb-0">Admin Login</h3>
+                </div>
+                <div class="card-body p-4">
+                    {% for message in messages %}
+                        {% if message %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="form-group mt-4 mb-0">
+                            <input class="btn btn-success btn-block btn-lg" type="submit" value="Login">
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4 text-center border-top pt-3">
+                        <small class="text-muted">Are you a Farmer?</small><br>
+                        <a href="{% url 'farmer-login' %}" class="btn btn-outline-success btn-sm mt-2">Farmer Login</a>
+                    </div>
+                     <div class="mt-2 text-center">
+                        <small class="text-muted">Don't have an account? <a href="{% url 'user-register' %}" class="text-success font-weight-bold">Register Here</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

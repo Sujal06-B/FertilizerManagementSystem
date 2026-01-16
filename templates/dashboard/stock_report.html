@@ -1,0 +1,61 @@
+{% extends 'partials/base.html' %}
+{% block title %}Stock Report{% endblock %}
+{% block content %}
+{% include 'partials/topnav.html' %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-success text-white text-center p-4">
+                <h3>Total Stock Received</h3>
+                <h1>{{ total_received }}</h1>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-warning text-white text-center p-4">
+                <h3>Total Stock Sold</h3>
+                <h1>{{ total_sold }}</h1>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white text-center p-4">
+                <h3>Total Stock Value</h3>
+                <h1>₹{{ total_inventory_value }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4>Inventory Status (Fertilizers)</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Company</th>
+                        <th>Current Stock</th>
+                        <th>Weight</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.company }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.weight }}</td>
+                        <td>₹{{ product.price }}</td>
+                         <td>
+                            <a href="{% url 'dashboard-product-update' product.id %}" class="btn btn-sm btn-success">Update</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

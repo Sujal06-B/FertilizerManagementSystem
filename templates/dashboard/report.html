@@ -1,0 +1,158 @@
+{% extends 'partials/base.html' %}
+{% block title %} Report Page {% endblock %}
+
+{% block content %}
+{% include 'partials/topnav.html' %}
+<div class="container">
+    <!-- Top Stats Rows (Optional, explicitly include if desired for 'report' context, but keeping it brief as per request for 'like snapshot') -->
+    <!-- Assuming snapshot focuses on graphs + summary -->
+
+    <!-- Summary Box -->
+    <div class="row my-4">
+        <div class="col-md-12">
+            <div class="bg-light p-4 shadow rounded animate__animated animate__fadeIn">
+                <h3 class="text-center mb-4 text-success">
+                    📊 Sale's Summary
+                </h3>
+                <div class="row">
+                    <!-- Most Sold Product -->
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-0 shadow-sm rounded h-100 card-hover">
+                            <div class="card-body">
+                                <h5 class="card-title text-success d-flex align-items-center">
+                                    <i class="bi bi-box-seam me-2"></i>Most Sold Product
+                                </h5>
+                                <p class="mb-1"><strong>Product:</strong> {{ most_sold_product.name }}</p>
+                                <p class="mb-1"><strong>Total Sold:</strong> {{ most_sold_product.total_sold }}</p>
+                                <p><strong>Quantity in Warehouse:</strong> {{ most_sold_product.quantity }}</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Least Sold Product -->
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-0 shadow-sm rounded h-100 card-hover">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger d-flex align-items-center">
+                                    <i class="bi bi-box2-heart me-2"></i>Least Sold Product
+                                </h5>
+                                <p class="mb-1"><strong>Product:</strong> {{ least_sold_product.name }}</p>
+                                <p class="mb-1"><strong>Total Sold:</strong> {{ least_sold_product.total_sold }}</p>
+                                <p><strong>Quantity in Warehouse:</strong> {{ least_sold_product.quantity }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row my-5">
+        <!-- Products per Orders (Pie Chart) -->
+        <div class="col-md-6">
+            <div class="bg-white p-3 shadow-sm rounded animate__animated animate__fadeIn">
+                <p class="text-center mb-2" style="font-size: 14px; font-weight: bold;">Products per Orders</p>
+                <canvas id="myChart1" width="400" height="300"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart1').getContext('2d');
+                    var myChart1 = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: [{% for order in orders %} '{{ order.product.name }}', {% endfor %}],
+                            datasets: [{
+                                label: 'Products',
+                                data: [{% for order in orders %} {{ order.order_quantity }}, {% endfor %}],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)',
+                                    'rgba(75, 192, 192, 0.8)', 'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)',
+                                    'rgba(140, 100, 12, 0.8)', 'rgba(170, 62, 25, 0.8)', 'rgba(163, 203, 27, 0.8)',
+                                    'rgba(7, 12, 12, 0.8)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'top' },
+                                title: { display: false }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+        <!-- Products per Count (Bar Chart) -->
+        <div class="col-md-6">
+            <div class="bg-white p-3 shadow-sm rounded animate__animated animate__fadeIn">
+                <p class="text-center mb-2" style="font-size: 14px; font-weight: bold;">Products per Count</p>
+                <canvas id="myChart" width="400" height="300"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [{% for product in products %} '{{ product.name }}', {% endfor %}],
+                            datasets: [{
+                                label: 'Quantity',
+                                data: [{% for product in products %} '{{ product.quantity }}', {% endfor %}],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)',
+                                    'rgba(75, 192, 192, 0.8)', 'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: { yAxes: [{ ticks: { beginAtZero: true } }] }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Billing History Table -->
+    <div class="row my-5">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4>Billing History (Approved Orders)</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Farmer</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            {% if order.status == 'Accepted' %}
+                            <tr>
+                                <td>#{{ order.id }}</td>
+                                <td>{{ order.staff.username }}</td>
+                                <td>{{ order.product.name }}</td>
+                                <td>{{ order.order_quantity }}</td>
+                                <td>{{ order.date|date:"F d, Y" }}</td>
+                                <td><span class="badge badge-success">Billed</span></td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

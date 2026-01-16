@@ -1,0 +1,8 @@
+
+Run Project
+
+python manage.py runserver
+
+virtual environment deactivate
+
+deactivate
