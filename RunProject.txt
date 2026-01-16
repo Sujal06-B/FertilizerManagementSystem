@@ -6,3 +6,15 @@ python manage.py runserver
 virtual environment deactivate
 
 deactivate
+
+
+
+
+push code on git 
+git status 
+
+git add . 
+
+git commit -m "messaage "
+
+git push -u origin main
