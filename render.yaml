@@ -1,0 +1,22 @@
+databases:
+  - name: fertilizers_db
+    databaseName: fertilizers_db
+    user: fertilizers_user
+    plan: free
+
+services:
+  - type: web
+    name: fertilizers-app
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn inventorysystem4.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fertilizers_db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+    plan: free
