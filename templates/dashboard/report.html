@@ -124,32 +124,34 @@
                     <h4>Billing History (Approved Orders)</h4>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Farmer</th>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for order in orders %}
-                            {% if order.status == 'Accepted' %}
-                            <tr>
-                                <td>#{{ order.id }}</td>
-                                <td>{{ order.staff.username }}</td>
-                                <td>{{ order.product.name }}</td>
-                                <td>{{ order.order_quantity }}</td>
-                                <td>{{ order.date|date:"F d, Y" }}</td>
-                                <td><span class="badge badge-success">Billed</span></td>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Farmer</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                {% if order.status == 'Accepted' %}
+                                <tr>
+                                    <td>#{{ order.id }}</td>
+                                    <td>{{ order.staff.username }}</td>
+                                    <td>{{ order.product.name }}</td>
+                                    <td>{{ order.order_quantity }}</td>
+                                    <td>{{ order.date|date:"F d, Y" }}</td>
+                                    <td><span class="badge badge-success">Billed</span></td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -29,32 +29,34 @@
             <h4>Inventory Status (Fertilizers)</h4>
         </div>
         <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Company</th>
-                        <th>Current Stock</th>
-                        <th>Weight</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in products %}
-                    <tr>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.company }}</td>
-                        <td>{{ product.quantity }}</td>
-                        <td>{{ product.weight }}</td>
-                        <td>₹{{ product.price }}</td>
-                         <td>
-                            <a href="{% url 'dashboard-product-update' product.id %}" class="btn btn-sm btn-success">Update</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Company</th>
+                            <th>Current Stock</th>
+                            <th>Weight</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.company }}</td>
+                            <td>{{ product.quantity }}</td>
+                            <td>{{ product.weight }}</td>
+                            <td>₹{{ product.price }}</td>
+                             <td>
+                                <a href="{% url 'dashboard-product-update' product.id %}" class="btn btn-sm btn-success">Update</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

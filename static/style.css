@@ -123,3 +123,30 @@ a:hover {
     border: 1px solid #c8e6c9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Mobile Enhancements */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .card-header h3, .card-header h4 {
+        font-size: 1.25rem;
+    }
+    
+    .btn-lg {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+    
+    /* Improve table scrolling on mobile */
+    .table-responsive {
+        border: 0;
+    }
+    
+    /* Stack stats cards with spacing */
+    .col-md-4 .card {
+        margin-bottom: 20px;
+    }
+}

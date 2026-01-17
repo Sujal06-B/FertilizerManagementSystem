@@ -28,35 +28,37 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <table class="table bg-white">
-                    <thead class="bg-info">
-                        <tr class="text-white">
-                            <th scope="col">Name</th>
-                            <th scope="col">Company</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Weight</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Activity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in items %}
-                        <tr>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.company }}</td>
-                            <td>{{ item.category }}</td>
-                            <td>{{ item.price }}</td>
-                            <td>{{ item.weight }}</td>
-                            <td>{{ item.quantity }}</td>
-                            <td>
-                                <a class="btn btn-info btn-sm" href="{% url 'dashboard-product-update' item.id %}">Edit</a>
-                                <a class="btn btn-danger btn-sm" href="{% url 'dashboard-product-delete' item.id %}">Delete</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table bg-white">
+                        <thead class="bg-info">
+                            <tr class="text-white">
+                                <th scope="col">Name</th>
+                                <th scope="col">Company</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Weight</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.company }}</td>
+                                <td>{{ item.category }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>{{ item.weight }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" href="{% url 'dashboard-product-update' item.id %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'dashboard-product-delete' item.id %}">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
