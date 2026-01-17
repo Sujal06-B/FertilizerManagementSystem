@@ -1,0 +1,29 @@
+{% extends 'partials/base.html' %}
+{% block title%} Register - Fertilizer Management System {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg mt-5">
+                <div class="card-header bg-success text-white text-center">
+                    <h3 class="mb-0">Admin Registration</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="form-group mt-4 mb-0">
+                            <input class="btn btn-success btn-block btn-lg" type="submit" value="Register">
+                        </div>
+                    </form>
+                    <div class="mt-3 text-center">
+                        <small class="text-muted">Already have an account? <a href="{% url 'user-login' %}" class="text-success font-weight-bold">Login Here</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
