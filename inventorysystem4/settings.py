@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hxdyx8dr6s-5ngjdc0iujhbb#iz7tazs6-=s9=v*%%&z!!6f!2'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-hxdyx8dr6s-5ngjdc0iujhbb#iz7tazs6-=s9=v*%%&z!!6f!2')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -135,7 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 LOGIN_REDIRECT_URL = 'dashboard-index'
 
@@ -147,7 +147,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1', 
     'http://localhost',
-    'https://*.onrender.com'
+    'https://*.onrender.com',
+    'https://*.netlify.app'
 ]
 
 CSRF_COOKIE_SECURE = False
