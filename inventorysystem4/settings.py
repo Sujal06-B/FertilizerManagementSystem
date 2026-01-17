@@ -147,8 +147,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1', 
     'http://localhost',
-    'https://*.onrender.com',
-    'https://*.netlify.app'
+    'https://*.onrender.com'
 ]
 
 CSRF_COOKIE_SECURE = False
